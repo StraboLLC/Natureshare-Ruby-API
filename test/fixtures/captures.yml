@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  token: MyString
+  latitude: MyString
+  longitude: MyString
+  heading: MyString
+  description: MyString
+  taken_at: 2012-07-19 11:10:49
+  media_type: MyString
+  orientation: MyString
+  encoding_finished: false
+  mp4_finished: false
+  webm_finished: false
+
+two:
+  title: MyString
+  token: MyString
+  latitude: MyString
+  longitude: MyString
+  heading: MyString
+  description: MyString
+  taken_at: 2012-07-19 11:10:49
+  media_type: MyString
+  orientation: MyString
+  encoding_finished: false
+  mp4_finished: false
+  webm_finished: false
