@@ -4,6 +4,7 @@
 
 class UploadController < ApplicationController
     def upload
+        puts params.to_s
         if params[:capture_info] && params[:media_file] && params[:geo_data] && params[:thumbnail]
             @r = {}
             aws_bucket = AMAZON_BUCKET
@@ -58,17 +59,17 @@ class UploadController < ApplicationController
                     @capture.job_id = video.attributes['id']
                     @capture.webm_id = video.encodings[0].attributes['id']
                     @capture.mp4_id = video.encodings[1].attributes['id']
-                    @r['data'] = @capture
                 end #encode video
+                @r['data'] = @capture
             else
                 @r = {:error => "true"}
             end
         else
             @r = {:error => "true", :message => "parameters incorrectly set"}
-            @r['capture_info']=false if(!params[:capture_info])
-            @r['media_file']=false if(!params[:media_file])
-            @r['geo_data']=false if(!params[:geo_data])
-            @r['thumbnail']=false if(!params[:thumbnail])
+            @r['capture_info'] = params[:capture_info].nil?
+            @r['media_file'] = params[:capture_info].nil?
+            @r['geo_data'] = params[:media_file].nil?
+            @r['thumbnail'] = params[:thumbnail].nil?
         end
         render :json => @r
     end
