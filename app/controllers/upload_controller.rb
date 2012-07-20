@@ -63,6 +63,8 @@ class UploadController < ApplicationController
             else
                 @r = {:error => "true"}
             end
+        else
+            @r = {:error => "true", :message => "parameters incorrectly set"}
         end
         render :json => @r
     end
