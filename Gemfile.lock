@@ -56,6 +56,7 @@ GEM
     net-ssh (2.5.2)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
+    newrelic_rpm (3.3.5)
     panda (1.5.0)
       faraday (>= 0.7.0)
       multi_json
@@ -114,6 +115,7 @@ DEPENDENCIES
   aws-s3
   json
   localtunnel
+  newrelic_rpm
   panda
   pg
   rails (= 3.2.5)

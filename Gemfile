@@ -7,6 +7,7 @@ gem 'rails', '3.2.5'
 
 # Use the Amazon SDK for storing files
 gem 'aws-s3'
+gem 'newrelic_rpm'
 
 # Use Panda for Video Encoding
 gem 'panda'
