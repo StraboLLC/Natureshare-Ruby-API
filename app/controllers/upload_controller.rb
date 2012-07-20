@@ -1,6 +1,6 @@
 
 
-#curl -F 'capture_info=@capture-info.json;type=application/json' -F 'geo_data=@3f96474a8a03ebc48f402b43d150a9fa.json;type=application/json' -F 'media_file=@3f96474a8a03ebc48f402b43d150a9fa.mov;type=video/quicktime' -F 'thumbnail=@3f96474a8a03ebc48f402b43d150a9fa.png;type=image/png' localhost:3000/upload
+#curl -F 'capture_info=@capture-info.json;type=application/json' -F 'geo_data=@3f96474a8a03ebc48f402b43d150a9fa.json;type=application/json' -F 'media_file=@3f96474a8a03ebc48f402b43d150a9fa.mov;type=video/quicktime' -F 'thumbnail=@3f96474a8a03ebc48f402b43d150a9fa.png;type=image/png' ns-api.heroku.com/upload
 
 class UploadController < ApplicationController
     def upload
@@ -65,6 +65,10 @@ class UploadController < ApplicationController
             end
         else
             @r = {:error => "true", :message => "parameters incorrectly set"}
+            @r['capture_info']=false if(!params[:capture_info])
+            @r['media_file']=false if(!params[:media_file])
+            @r['geo_data']=false if(!params[:geo_data])
+            @r['thumbnail']=false if(!params[:thumbnail])
         end
         render :json => @r
     end
