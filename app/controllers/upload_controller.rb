@@ -15,8 +15,10 @@ class UploadController < ApplicationController
             json = JSON(capture_info.read)
             geo_json = JSON(geo_data.read)
             json['points']=geo_json['points']
+            token = json["token"]
             output = json.to_json.to_s
-            output = "S.setCurrentResponse(JSON.parse('"+output+"'));console.log('Do this');S.currentRamble._processResponse(S.currentResponse);"
+            output = "var response = JSON.parse('#{output}'));"
+            output += "S.rambles['#{token}']._processResponse(response);"
             finished=true
             if media_file.content_type == "image/jpeg"
                 capture_type = "photo"
