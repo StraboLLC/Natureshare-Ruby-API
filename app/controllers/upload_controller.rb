@@ -17,7 +17,7 @@ class UploadController < ApplicationController
             json['points']=geo_json['points']
             token = json["token"]
             output = json.to_json.to_s
-            output = "var response = JSON.parse('#{output}');"
+            output = "var response = JSON.parse('#{output}'));"
             output += "S.rambles['#{token}']._processResponse(response);"
             finished=true
             if media_file.content_type == "image/jpeg"
@@ -62,7 +62,7 @@ class UploadController < ApplicationController
                     @capture.webm_id = video.encodings[0].attributes['id']
                     @capture.mp4_id = video.encodings[1].attributes['id']
                 end #encode video
-                @r['data'] = @capture
+                @r = {:error => "false", :message => "Uploaded Successfully.", :token => @capture.token}
             else
                 @r = {:error => "true", :message => "Could not log capture into database."}
             end
